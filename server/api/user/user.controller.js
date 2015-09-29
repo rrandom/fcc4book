@@ -80,6 +80,28 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
+ * Update City, fullName and state
+ */
+exports.updateProfile = function(req, res, next){
+  var userId = req.user._id;
+  var city = String(req.body.city);
+  var fullName = String(req.body.fullName);
+  var state = String(req.body.state);
+
+  User.findById(userId, function(err, user){
+    user.city = city;
+    user.fullName = fullName;
+    user.state = state;
+    user.save(function(err) {
+      if (err){
+        return validationError(res, err);
+      }
+      res.status(200).send('OK');
+    });
+  });
+};
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {

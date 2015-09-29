@@ -17,6 +17,12 @@ angular.module('fcc4bookApp')
         params: {
           id:'me'
         }
+      },
+      updateProfile: {
+        method: 'PUT',
+        params: {
+          controller:'updateprofile'
+        }
       }
 	  });
   });

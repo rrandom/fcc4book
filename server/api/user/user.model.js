@@ -21,6 +21,10 @@ var UserSchema = new Schema({
   state: {
     type: String,
     default: ''
+  },
+  fullName: {
+    type: String,
+    default: ''
   }
 });
 

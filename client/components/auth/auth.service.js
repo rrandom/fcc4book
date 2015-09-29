@@ -93,6 +93,29 @@ angular.module('fcc4bookApp')
       },
 
       /**
+       * Update profile
+       *
+       * @param  {String}   state
+       * @param  {String}   city
+       * @param  {String}   fullName
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      updateProfile: function(state, city, fullName, callback){
+        var cb = callback || angular.noop;
+
+        return User.updateProfile({ id: currentUser._id }, {
+          state: state,
+          city: city,
+          fullName: fullName
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+      /**
        * Gets all available info on authenticated user
        *
        * @return {Object} user

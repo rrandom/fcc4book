@@ -10,8 +10,8 @@
           <button type="submit" class="btn btn-primary">Add</button>
         </div>
       </form>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="book in books">
-        <li><a href="#">{{book}}</a></li>
+      <ul class="nav nav-tabs nav-stacked col-md-3 col-lg-2 col-sm-6" ng-repeat="book in books">
+        <li><a href="#"><img ng-src="{{book.cover}}"><p class="text-center">{{book.name}}</p></a></li>
       </ul>
     </div>
   </div>

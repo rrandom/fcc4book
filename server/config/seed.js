@@ -11,10 +11,10 @@ var Book = require('../api/book/book.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
-    name : 'Development Tools',
+    name : 'Manage your books',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
   }, {
-    name : 'Server and Client integration',
+    name : 'Share your books',
     info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
   }, {
     name : 'Smart Build System',
@@ -55,8 +55,8 @@ User.find({}).remove(function() {
 
 Book.find({}).remove(function(){
   Book.create({
-    name: 'test',
-    cover: '#'
+    name: 'Eloquent JavaScript',
+    cover: 'https://s.doubanio.com/lpic/s7011950.jpg'
   }, function(){
     console.log("finished populating books");
   });

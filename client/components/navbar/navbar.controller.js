@@ -12,9 +12,6 @@ angular.module('fcc4bookApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.fullName = $scope.getCurrentUser().fullName;
-    $scope.userName = $scope.getCurrentUser().name;
-
     $scope.logout = function() {
       Auth.logout();
       $location.path('/login');

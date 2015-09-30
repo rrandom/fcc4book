@@ -11,6 +11,13 @@ exports.index = function(req, res) {
   });
 };
 
+exports.showMyBooks = function(req, res){
+  Book.find({owner: req.user._id}, function (err, books) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(books);
+  });
+};
+
 // Get a single book
 exports.show = function(req, res) {
   Book.findById(req.params.id, function (err, book) {

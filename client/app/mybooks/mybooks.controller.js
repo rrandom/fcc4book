@@ -1,22 +1,32 @@
 'use strict';
 
 angular.module('fcc4bookApp')
-  .controller('MybooksCtrl', function ($scope, $http) {
+  .controller('MybooksCtrl', function ($scope, $http, Auth) {
     $scope.books = [];
+    $scope.user = Auth.getCurrentUser();
 
-    $http.get('/api/books').success(function (books) {
-      $scope.books = books;
-    });
+    function getMyBooks() {
+      console.log('$scope.user._id:', $scope.user._id);
+      $http.get('/api/books/my').success(function (books) {
+        $scope.books = books;
+      });
+    }
 
-    $http.addBook = function () {
+    $scope.addBook = function () {
       if ($scope.newBook === '') {
         return;
       }
-      $http.post('/api/things', {
-        name: $scope.newBook
+      $http.post('/api/books', {
+        name: $scope.newBook,
+        cover: '#',
+        owner: $scope.user
+      }).success(function () {
+        console.log('Add new book sucess');
+        getMyBooks();
       });
       $scope.newBook = '';
-
     };
+
+    getMyBooks();
 
   });
